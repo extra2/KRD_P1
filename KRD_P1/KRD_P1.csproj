@@ -71,6 +71,7 @@
     <Compile Include="View\PackagesManageForm.Designer.cs">
       <DependentUpon>PackagesManageForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Controller\UserController.cs" />
     <Compile Include="View\UserManageForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -78,7 +79,6 @@
       <DependentUpon>UserManageForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Model\Interfaces\IMessageProvider.cs" />
-    <Compile Include="Model\UsersLogin.cs" />
     <Compile Include="View\MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -139,9 +139,7 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Controller\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Content Include="TODO.txt" />
   </ItemGroup>

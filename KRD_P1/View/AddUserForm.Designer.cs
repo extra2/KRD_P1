@@ -62,7 +62,7 @@
             // 
             // buttonAddUser
             // 
-            this.buttonAddUser.Location = new System.Drawing.Point(8, 151);
+            this.buttonAddUser.Location = new System.Drawing.Point(8, 146);
             this.buttonAddUser.Name = "buttonAddUser";
             this.buttonAddUser.Size = new System.Drawing.Size(230, 42);
             this.buttonAddUser.TabIndex = 3;
@@ -77,7 +77,7 @@
             "Item 1",
             "Item 2",
             "Item 3"});
-            this.comboBox1.Location = new System.Drawing.Point(8, 113);
+            this.comboBox1.Location = new System.Drawing.Point(8, 119);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(230, 21);
             this.comboBox1.TabIndex = 4;
@@ -85,7 +85,7 @@
             // checkBoxFirst
             // 
             this.checkBoxFirst.AutoSize = true;
-            this.checkBoxFirst.Location = new System.Drawing.Point(8, 90);
+            this.checkBoxFirst.Location = new System.Drawing.Point(8, 96);
             this.checkBoxFirst.Name = "checkBoxFirst";
             this.checkBoxFirst.Size = new System.Drawing.Size(75, 17);
             this.checkBoxFirst.TabIndex = 5;
@@ -96,7 +96,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(257, 213);
+            this.ClientSize = new System.Drawing.Size(257, 202);
             this.Controls.Add(this.checkBoxFirst);
             this.Controls.Add(this.comboBox1);
             this.Controls.Add(this.buttonAddUser);

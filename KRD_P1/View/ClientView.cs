@@ -21,7 +21,7 @@ namespace KRD_P1.View
         }
 
         private void Reload(int clientID)
-        {
+        { 
             if (!File.Exists("packages.xml")) File.Create("packages.xml");
             List<Package> packagesFromXML = new XMLProvider().XMLToPackages();
             packagesFromXML = packagesFromXML.Where(e => e.ID_User == clientID).ToList();

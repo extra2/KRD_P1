@@ -32,14 +32,14 @@
             this.textBoxSearch = new System.Windows.Forms.TextBox();
             this.buttonDelete = new System.Windows.Forms.Button();
             this.buttonEdit = new System.Windows.Forms.Button();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.dataGridViewUsers = new System.Windows.Forms.DataGridView();
             this.buttonSearch = new System.Windows.Forms.Button();
             this.Imię = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Nazwisko = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Ulica = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.buttonReload = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewUsers)).BeginInit();
             this.SuspendLayout();
             // 
             // buttonAdd
@@ -80,18 +80,18 @@
             this.buttonEdit.UseVisualStyleBackColor = true;
             this.buttonEdit.Click += new System.EventHandler(this.buttonEdit_Click);
             // 
-            // dataGridView1
+            // dataGridViewUsers
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dataGridViewUsers.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewUsers.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Imię,
             this.Nazwisko,
             this.Ulica,
             this.ID});
-            this.dataGridView1.Location = new System.Drawing.Point(32, 92);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(497, 345);
-            this.dataGridView1.TabIndex = 5;
+            this.dataGridViewUsers.Location = new System.Drawing.Point(32, 92);
+            this.dataGridViewUsers.Name = "dataGridViewUsers";
+            this.dataGridViewUsers.Size = new System.Drawing.Size(497, 345);
+            this.dataGridViewUsers.TabIndex = 5;
             // 
             // buttonSearch
             // 
@@ -142,14 +142,14 @@
             this.ClientSize = new System.Drawing.Size(532, 450);
             this.Controls.Add(this.buttonReload);
             this.Controls.Add(this.buttonSearch);
-            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.dataGridViewUsers);
             this.Controls.Add(this.buttonEdit);
             this.Controls.Add(this.buttonDelete);
             this.Controls.Add(this.textBoxSearch);
             this.Controls.Add(this.buttonAdd);
             this.Name = "UserManageForm";
             this.Text = "Fajba Forma";
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewUsers)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -161,7 +161,7 @@
         private System.Windows.Forms.TextBox textBoxSearch;
         private System.Windows.Forms.Button buttonDelete;
         private System.Windows.Forms.Button buttonEdit;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView dataGridViewUsers;
         private System.Windows.Forms.Button buttonSearch;
         private System.Windows.Forms.DataGridViewTextBoxColumn Imię;
         private System.Windows.Forms.DataGridViewTextBoxColumn Nazwisko;

@@ -10,7 +10,7 @@ using System.Windows.Forms;
 using KRD_P1.View;
 
 namespace KRD_P1
-{
+{ 
     public partial class MainForm : Form
     {
         public MainForm()

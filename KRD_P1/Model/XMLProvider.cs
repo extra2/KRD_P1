@@ -41,51 +41,13 @@ namespace KRD_P1
             }
             return (List<User>)obj;
         }
-        public void AddLoginToXML(UsersLogin usersLogin)
-        {
-            var sw = new StringWriter();
-            XmlTextWriter tw = null;
-            var loginList = GetLoginsFromXML();
-            var serializer = new XmlSerializer(loginList.GetType());
-            tw = new XmlTextWriter(sw);
-            // add ID to new user
-            var maxID = loginList.Count > 0 ? loginList.Max(i => i.ID) + 1 : 1;
-            usersLogin.ID = maxID;
-            loginList.Add(usersLogin);
 
-            serializer.Serialize(tw, loginList);
-            File.Delete("login.xml");
-            File.WriteAllText("login.xml", sw.ToString());
-        }
-
-        public UsersLogin Login(string login, string password)
+        public User Login(string login, string password)
         {
-            var obj = GetLoginsFromXML();
+            var obj = XMLToUsers(File.ReadAllText("users.xml"));
             var role = obj.FirstOrDefault(u => u.Login == login && u.Password == password);
             return role;
 
-        }
-
-        public List<UsersLogin> GetLoginsFromXML()
-        {
-            var xml = File.ReadAllText("login.xml");
-            StringReader strReader = null;
-            XmlTextReader xmlReader = null;
-            List<UsersLogin> obj = null;
-            try
-            {
-                strReader = new StringReader(xml);
-                var serializer = new XmlSerializer(typeof(List<UsersLogin>));
-                xmlReader = new XmlTextReader(strReader);
-                obj = (List<UsersLogin>)serializer.Deserialize(xmlReader);
-            }
-            catch (Exception) { }
-            finally
-            {
-                xmlReader?.Close();
-                strReader?.Close();
-            }
-            return obj ?? new List<UsersLogin>();
         }
 
         public void PackageToXML(List<Package> packages)

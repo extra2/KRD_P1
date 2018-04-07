@@ -13,6 +13,8 @@ namespace KRD_P1
 {
     public partial class AddUserForm : Form
     {
+        public delegate void AddUser(User user);
+        public UserController userController = new UserController();
         public AddUserForm(User user)
         {
             InitializeComponent();
@@ -33,17 +35,13 @@ namespace KRD_P1
             {
                 Name = textBoxName.Text,
                 Surname = textBoxSurname.Text,
-                Street = textBoxStreet.Text
+                Street = textBoxStreet.Text,
+                Login = textBoxName.Text,
+                Password = "password",
+                Role = "user"
             };
-            // load users
-            if (!File.Exists("users.xml")) File.Create("users.xml");
-            var usersInXml = File.ReadAllText("users.xml");
-            var usersFromXML = new XMLProvider().XMLToUsers(usersInXml) ?? new List<User>();
-            user.ID = usersFromXML.Count == 0 ? 1 : usersFromXML.Max(f => f.ID) + 1;
-            usersFromXML.Add(user); // add user
-            // new file (include all users)
-            var newXML = new XMLProvider().UsersToXML(usersFromXML);
-            File.WriteAllText("users.xml", newXML);
+            AddUser addUser = userController.AddUser;
+            addUser.Invoke(user);
             Close();
         }
     }
