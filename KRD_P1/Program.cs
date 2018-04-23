@@ -11,15 +11,6 @@ namespace KRD_P1
         [STAThread]
         static void Main()
         {
-            new UsersFromDb().AddUser(new User()
-            {
-                Login = "postman",
-                Name = "postman",
-                Password = "postman",
-                Role = "postman",
-                Street = "postman",
-                Surname = "surname"
-            });
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new RegisterForm());
