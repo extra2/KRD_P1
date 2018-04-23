@@ -40,7 +40,7 @@ namespace KRD_P1
                     break;
                 case "user":
                     messages.SendMessage("Logged in as user " + login);
-                    new ClientView(role.ID);
+                    new ClientView(role.ID).Show();
                     break;
                 default:
                     messages.SendMessage("User does not exist");

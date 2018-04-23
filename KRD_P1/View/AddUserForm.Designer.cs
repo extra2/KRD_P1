@@ -32,8 +32,10 @@
             this.textBoxSurname = new System.Windows.Forms.TextBox();
             this.textBoxStreet = new System.Windows.Forms.TextBox();
             this.buttonAddUser = new System.Windows.Forms.Button();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.comboBoxRole = new System.Windows.Forms.ComboBox();
             this.checkBoxFirst = new System.Windows.Forms.CheckBox();
+            this.textBoxLogin = new System.Windows.Forms.TextBox();
+            this.textBoxPassword = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // textBoxName
@@ -62,7 +64,7 @@
             // 
             // buttonAddUser
             // 
-            this.buttonAddUser.Location = new System.Drawing.Point(8, 146);
+            this.buttonAddUser.Location = new System.Drawing.Point(8, 206);
             this.buttonAddUser.Name = "buttonAddUser";
             this.buttonAddUser.Size = new System.Drawing.Size(230, 42);
             this.buttonAddUser.TabIndex = 3;
@@ -70,35 +72,54 @@
             this.buttonAddUser.UseVisualStyleBackColor = true;
             this.buttonAddUser.Click += new System.EventHandler(this.buttonAddUser_Click);
             // 
-            // comboBox1
+            // comboBoxRole
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Items.AddRange(new object[] {
+            this.comboBoxRole.FormattingEnabled = true;
+            this.comboBoxRole.Items.AddRange(new object[] {
             "Item 1",
             "Item 2",
             "Item 3"});
-            this.comboBox1.Location = new System.Drawing.Point(8, 119);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(230, 21);
-            this.comboBox1.TabIndex = 4;
+            this.comboBoxRole.Location = new System.Drawing.Point(8, 179);
+            this.comboBoxRole.Name = "comboBoxRole";
+            this.comboBoxRole.Size = new System.Drawing.Size(230, 21);
+            this.comboBoxRole.TabIndex = 4;
             // 
             // checkBoxFirst
             // 
             this.checkBoxFirst.AutoSize = true;
-            this.checkBoxFirst.Location = new System.Drawing.Point(8, 96);
+            this.checkBoxFirst.Location = new System.Drawing.Point(8, 156);
             this.checkBoxFirst.Name = "checkBoxFirst";
             this.checkBoxFirst.Size = new System.Drawing.Size(75, 17);
             this.checkBoxFirst.TabIndex = 5;
             this.checkBoxFirst.Text = "CheckBox";
             this.checkBoxFirst.UseVisualStyleBackColor = true;
             // 
+            // textBoxLogin
+            // 
+            this.textBoxLogin.Location = new System.Drawing.Point(8, 91);
+            this.textBoxLogin.Name = "textBoxLogin";
+            this.textBoxLogin.Size = new System.Drawing.Size(230, 20);
+            this.textBoxLogin.TabIndex = 6;
+            this.textBoxLogin.Text = "Login";
+            // 
+            // textBoxPassword
+            // 
+            this.textBoxPassword.Location = new System.Drawing.Point(8, 117);
+            this.textBoxPassword.Name = "textBoxPassword";
+            this.textBoxPassword.PasswordChar = '*';
+            this.textBoxPassword.Size = new System.Drawing.Size(230, 20);
+            this.textBoxPassword.TabIndex = 7;
+            this.textBoxPassword.Text = "Password";
+            // 
             // AddUserForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(257, 202);
+            this.ClientSize = new System.Drawing.Size(257, 272);
+            this.Controls.Add(this.textBoxPassword);
+            this.Controls.Add(this.textBoxLogin);
             this.Controls.Add(this.checkBoxFirst);
-            this.Controls.Add(this.comboBox1);
+            this.Controls.Add(this.comboBoxRole);
             this.Controls.Add(this.buttonAddUser);
             this.Controls.Add(this.textBoxStreet);
             this.Controls.Add(this.textBoxSurname);
@@ -116,7 +137,9 @@
         private System.Windows.Forms.TextBox textBoxSurname;
         private System.Windows.Forms.TextBox textBoxStreet;
         private System.Windows.Forms.Button buttonAddUser;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox comboBoxRole;
         private System.Windows.Forms.CheckBox checkBoxFirst;
+        private System.Windows.Forms.TextBox textBoxLogin;
+        private System.Windows.Forms.TextBox textBoxPassword;
     }
 }

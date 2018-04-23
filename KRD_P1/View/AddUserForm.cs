@@ -11,14 +11,17 @@ using System.Windows.Forms;
 
 namespace KRD_P1
 {
+    public delegate void AddUser(User user);
     public partial class AddUserForm : Form
     {
-        public delegate void AddUser(User user);
+        
         public UserController userController = new UserController();
         public AddUserForm(User user)
         {
             InitializeComponent();
             if (user != null) FillTextBoxes(user);
+            var roles = new List<string>() {"user", "admin", "postman"};
+            comboBoxRole.DataSource = roles;
         }
 
         public void FillTextBoxes(User user)
@@ -29,17 +32,17 @@ namespace KRD_P1
         }
         private void buttonAddUser_Click(object sender, EventArgs e)
         {
-
             // create user
             var user = new User
             {
                 Name = textBoxName.Text,
                 Surname = textBoxSurname.Text,
                 Street = textBoxStreet.Text,
-                Login = textBoxName.Text,
-                Password = "password",
-                Role = "user"
+                Login = textBoxLogin.Text,
+                Password = textBoxPassword.Text,
+                Role = comboBoxRole.Text
             };
+            // to delegate
             AddUser addUser = userController.AddUser;
             addUser.Invoke(user);
             Close();

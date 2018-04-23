@@ -33,7 +33,7 @@ namespace KRD_P1
             if (selectedUser == -1) return;
 
             UserHandler editUser = userController.EditUser;
-            editUser.Invoke(0);
+            editUser.Invoke(selectedUser);
             
             DeleteUser();
             Reload();
@@ -44,7 +44,7 @@ namespace KRD_P1
             int selectedRow;
             try
             {
-                selectedRow = dataGridViewUsers.SelectedRows[0].Index;
+                selectedRow = Int32.Parse(dataGridViewUsers.SelectedRows[0].Cells[3].Value.ToString());
             }
             catch (Exception)
             {
@@ -64,15 +64,8 @@ namespace KRD_P1
             var selectedUser = getSelectedUserIndex();
             if (selectedUser == -1) return;
 
-            GetUsers getUsers = userController.GetUsers;
-            var usersFromXML = getUsers.Invoke(null);
-
-
-            if (selectedUser >= usersFromXML.Count || selectedUser < 0) return;
-            var userToRemove = usersFromXML.First(i => i.ID == (int)dataGridViewUsers.Rows[selectedUser].Cells[3].Value);
-            usersFromXML.Remove(userToRemove);
-            var newXML = new XMLProvider().UsersToXML(usersFromXML);
-            File.WriteAllText("users.xml", newXML);
+            userController.DeleteUser(selectedUser);
+            
             Reload();
         }
         private void Reload()
