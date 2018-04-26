@@ -7,7 +7,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KRD_P1", "KRD_P1\KRD_P1.csp
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KRD_P1Tests", "KRD_P1Tests\KRD_P1Tests.csproj", "{5F30755E-98EA-4C1D-8F83-D60718012164}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KRD_P1.API", "..\KRDAspNetCore\KRDAspNetCore\KRD_P1.API.csproj", "{7C0F14F7-46AD-487E-A355-C736B8DBE02A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KRDAspNetCore", "..\KRDAspNetCore\KRDAspNetCore\KRDAspNetCore.csproj", "{7C0F14F7-46AD-487E-A355-C736B8DBE02A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

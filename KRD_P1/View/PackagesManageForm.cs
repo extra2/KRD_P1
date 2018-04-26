@@ -8,11 +8,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using KRD_P1.Controller;
 
 namespace KRD_P1.View
 {
     public partial class PackagesManageForm : Form
     {
+        private PackageController _pc = new PackageController();
         public PackagesManageForm()
         {
             InitializeComponent();
@@ -30,13 +32,11 @@ namespace KRD_P1.View
             int selectedRow = getSelectedItem();
             if (selectedRow == -1) return;
 
-            if (!File.Exists("packages.xml")) File.Create("packages.xml");
-            var usersInXml = File.ReadAllText("packages.xml");
-            List<Package> packagesFromXML = new XMLProvider().XMLToPackages();
+            var packagesFromDB = getPackages();
 
-            if (selectedRow >= packagesFromXML.Count || selectedRow < 0) return;
-            var packageToEdit = packagesFromXML.FirstOrDefault(i => i.PackageNumber == dataGridViewPackages.Rows[selectedRow].Cells[0].Value.ToString());
-            new AddPackageForm(packageToEdit.PackageNumber, packageToEdit.ID_User, packageToEdit.Status).Show();
+            if (selectedRow >= packagesFromDB.Count || selectedRow < 0) return;
+            var packageToEdit = packagesFromDB.FirstOrDefault(i => i.ID == Int32.Parse(dataGridViewPackages.Rows[selectedRow].Cells[0].Value.ToString()));
+            new AddPackageForm(packageToEdit.ID, packageToEdit.IdUser, packageToEdit.Status).Show();
             Reload();
         }
 
@@ -53,15 +53,16 @@ namespace KRD_P1.View
         }
         private void buttonDeletePackage_Click(object sender, EventArgs e)
         {
-            List<Package> packagesFromXML = getPackages();
+            List<Package> packagesFromDB = getPackages();
 
             int selectedRow = getSelectedItem();
             if (selectedRow == -1) return;
 
-            if (selectedRow >= packagesFromXML.Count || selectedRow < 0) return;
-            var packageToRemove = packagesFromXML.FirstOrDefault(i => i.PackageNumber == dataGridViewPackages.Rows[selectedRow].Cells[0].Value.ToString());
-            packagesFromXML.Remove(packageToRemove);
-            new XMLProvider().PackageToXML(packagesFromXML);
+            if (selectedRow >= packagesFromDB.Count || selectedRow < 0) return;
+            var packageToRemove = packagesFromDB.FirstOrDefault(i => i.ID == Int32.Parse(dataGridViewPackages.Rows[selectedRow].Cells[0].Value.ToString()));
+
+
+            _pc.DeletePackage(packageToRemove.ID);
             Reload();
         }
 
@@ -69,21 +70,20 @@ namespace KRD_P1.View
         {
             var searchOption = textBoxPackageNumber.Text;
 
-            List<Package> packagesFromXML = getPackages();
-            packagesFromXML = packagesFromXML.Where(f => f.PackageNumber.Contains(searchOption)).ToList();
+            List<Package> packagesFromDB = getPackages();
+            packagesFromDB = packagesFromDB.Where(f => f.ID.ToString().Contains(searchOption)).ToList();
 
             dataGridViewPackages.Rows.Clear();
-            if (packagesFromXML != null)
-                foreach (var pack in packagesFromXML)
+            if (packagesFromDB != null)
+                foreach (var pack in packagesFromDB)
                 {
-                    dataGridViewPackages.Rows.Add(pack.PackageNumber, pack.Status, pack.StatusChangedDate.ToString("g"));
+                    dataGridViewPackages.Rows.Add(pack.ID, pack.Status, pack.StatusChangedDate.ToString("g"));
                 }
         }
 
         public List<Package> getPackages()
         {
-            if (!File.Exists("packages.xml")) File.Create("packages.xml");
-            return new XMLProvider().XMLToPackages();
+            return _pc.GetPackages();
         }
         private void Reload()
         {
@@ -93,7 +93,7 @@ namespace KRD_P1.View
             if (packagesFromXML != null)
                 foreach (var pack in packagesFromXML)
                 {
-                    dataGridViewPackages.Rows.Add(pack.PackageNumber, pack.Status, pack.StatusChangedDate.ToString("g"));
+                    dataGridViewPackages.Rows.Add(pack.ID, pack.Status, pack.StatusChangedDate.ToString("g"));
                 }
         }
     }

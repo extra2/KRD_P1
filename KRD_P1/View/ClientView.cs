@@ -24,12 +24,12 @@ namespace KRD_P1.View
         { 
             if (!File.Exists("packages.xml")) File.Create("packages.xml");
             List<Package> packagesFromXML = new XMLProvider().XMLToPackages();
-            packagesFromXML = packagesFromXML.Where(e => e.ID_User == clientID).ToList();
+            packagesFromXML = packagesFromXML.Where(e => e.IdUser == clientID).ToList();
             dataGridViewPackages.Rows.Clear();
             if (packagesFromXML != null)
                 foreach (var pack in packagesFromXML)
                 {
-                    dataGridViewPackages.Rows.Add(pack.PackageNumber, pack.Status, pack.StatusChangedDate.ToString("g"));
+                    dataGridViewPackages.Rows.Add(pack.ID, pack.Status, pack.StatusChangedDate.ToString("g"));
                 }
         }
     }

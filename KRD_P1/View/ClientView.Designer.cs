@@ -47,7 +47,7 @@
             this.dataGridViewPackages.Size = new System.Drawing.Size(368, 426);
             this.dataGridViewPackages.TabIndex = 0;
             // 
-            // PackageNumber
+            // ID
             // 
             this.PackageNumber.HeaderText = "Numer Paczki";
             this.PackageNumber.Name = "PackageNumber";

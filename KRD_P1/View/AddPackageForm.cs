@@ -7,19 +7,23 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using KRD_P1.Model;
 
 namespace KRD_P1.View
 {
     public partial class AddPackageForm : Form
     {
+        public PackagesFromDB _packageProvider = new PackagesFromDB();
         public AddPackageForm()
         {
             InitializeComponent();
+            textBoxClientID.Text = "Pole zostanie wygenerowane";
+            textBoxClientID.Enabled = false;
         }
-        public AddPackageForm(string packageID, int clientID, string status)
+        public AddPackageForm(int packageID, int clientID, string status)
         {
             InitializeComponent();
-            textBoxPackageNumber.Text = packageID;
+            textBoxPackageNumber.Text = packageID.ToString();
             textBoxPackageNumber.Enabled = false;
             textBoxClientID.Text = clientID.ToString();
             textBoxClientID.Enabled = false;
@@ -27,26 +31,26 @@ namespace KRD_P1.View
         }
         private void buttonAddPackage_Click(object sender, EventArgs e)
         {
-            var packages = new XMLProvider().XMLToPackages();
-            var packageNumber = textBoxPackageNumber.Text;
+            var packages = _packageProvider.GetPackages();
+            var packageNumber = Int32.Parse(textBoxPackageNumber.Text);
             var clientID = textBoxClientID.Text;
             var status = textBoxStatus.Text;
             var time = DateTime.Now;
-            if (packages.FirstOrDefault(n => n.PackageNumber == packageNumber) == null)
-                packages.Add(new Package()
+            if (packages.FirstOrDefault(n => n.ID == packageNumber) == null)
+                _packageProvider.AddPackage(new Package()
                 {
-                    ID_User = Int32.Parse(clientID),
-                    PackageNumber = packageNumber,
+                    IdUser = Int32.Parse(clientID),
                     Status = status,
                     StatusChangedDate = time
                 });
             else
             {
-                packages.FirstOrDefault(n => n.PackageNumber == packageNumber).Status = status;
-                packages.FirstOrDefault(n => n.PackageNumber == packageNumber).StatusChangedDate = time;
+                var currPackage = packages.FirstOrDefault(n => n.ID == packageNumber);
+                currPackage.Status = status;
+                currPackage.StatusChangedDate = time;
+                _packageProvider.UpdatePackage(currPackage);
             }
-            new XMLProvider().PackageToXML(packages);
-            this.Close();
+            Close();
         }
     }
 }
